@@ -11,7 +11,7 @@ def get_completions(prompt):
     return completions.choices
 
 
-st.title('Playing with NLP and OpenAI GPT-3.5 using the amazing Streamlit')
+st.title('Playing with NLP and GPT-3')
 if 'generated' not in st.session_state:
     st.session_state['generated'] = []
 
