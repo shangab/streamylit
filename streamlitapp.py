@@ -4,7 +4,6 @@ import numpy as np
 import openai
 from streamlit_chat import message
 
-from config import OPENAI_API_KEY
 openai.api_key = OPENAI_API_KEY
 
 
