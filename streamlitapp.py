@@ -37,5 +37,12 @@ if prompt:
 
 if st.session_state['generated']:
     for i in range(len(st.session_state['generated'])-1, -1, -1):
-        message(st.session_state["generated"][i], key=str(i))
-        message(st.session_state['prompts'][i], is_user=True, key=str(i) + '_user')
+        g1,g2,g3=st.columns([1,7,2])
+        u1,u2,u3=st.columns([2,7,1])
+        g1.write(':face:')
+        g2.write(st.session_state["generated"][i])
+        u2.write(st.session_state['prompts'][i])
+        u3.write(':face:')
+        
+        # message(st.session_state["generated"][i], key=str(i))
+        # message(st.session_state['prompts'][i], is_user=True, key=str(i) + '_user')
