@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 from streamlit_chat import message
 
-openai.api_key = OPENAI_API_KEY
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 
 def get_completions(prompt):
