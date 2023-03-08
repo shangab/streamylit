@@ -8,6 +8,9 @@ with open('assets/css/styles.css') as css:
 st.title('NLP, GPT-3 and Machine Learning')
 st.subheader('Different Applications using AI tools and libraries')
 
+st.session_state.nlp=''
+st.session_state.ml=''
+st.session_state.bi=''
 
 
 sidebar.show()
