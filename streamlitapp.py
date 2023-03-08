@@ -1,8 +1,14 @@
 import streamlit as st
 import openai
 from streamlit_chat import message
+import sidebar
 
 openai.api_key = st.secrets["OPENAI_API_SECRET"]
+
+st.title('NLP, GPT-3 and Machine Learning')
+st.header('Application using AI python tools and libraries')
+st.subheader('By: Abubaker Shangab')
+sidebar.show()
 
 
 def get_completions(prompt):
@@ -11,7 +17,6 @@ def get_completions(prompt):
     return completions.choices
 
 
-st.title('Playing with NLP and GPT-3')
 if 'generated' not in st.session_state:
     st.session_state['generated'] = []
 
