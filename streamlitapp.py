@@ -28,6 +28,7 @@ if prompt:
     results = get_completions(prompt)
     st.session_state.prompts.append(prompt)
     st.session_state.generated.append(results[0].text)
+    prompt=''
 
 if st.session_state['generated']:
     for i in range(len(st.session_state['generated'])-1, -1, -1):
