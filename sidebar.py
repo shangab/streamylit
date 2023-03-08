@@ -11,4 +11,5 @@ def show():
         if st.session_state.nlp=='Openai API Models':
             st.session_state.nlp= st.radio("Openai API Models",("GPT-3 Completions","GPT-3 Classification", "GPT-3 Summarization"))
 
-        
+        if st.session_state.ml=='Tensorflow Keras':
+            st.session_state.ml=st.radio("Keras Classifications",("Example 1","Example 2"))
