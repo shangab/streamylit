@@ -18,7 +18,7 @@ def completions():
                     engine='text-davinci-003', max_tokens=100, prompt=prom, stream=True)
                 for resp in request:
                     block += resp.choices[0].text
-                    ans.code(block)
+                    ans.write(block)
             except:
                 err.error('Error happened')
 
