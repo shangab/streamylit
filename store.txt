@@ -1,0 +1,55 @@
+    if 'generated' not in st.session_state:
+        st.session_state['generated'] = []
+
+    if 'prompts' not in st.session_state:
+        st.session_state['prompts'] = []
+        
+    # def callopenai(prompt):
+    #     prompt= st.text_input()
+    #     emp=st.empty()
+    #     if prompt:
+    #         with st.spinner("Please wait"):
+    #             block=''
+    #             stream=True
+    #             try:
+    #                 request = openai.Completion.create(
+    #                     engine='text-davinci-003', max_tokens=100, prompt=prompt, stream=stream)
+    #                 for resp in request:
+    #                     block+=resp.choices[0].text
+    #                     emptytext.write(block)
+    #             except:
+    #                 st.error('Error happened')
+    #         st.session_state.generated.append(block)
+
+    # def get_prompt():
+    #     c1,c2,c3=st.columns([1,7,2])
+    #     c1.markdown(':man_in_tuxedo:')
+    #     if c3.button("Clear"):
+    #         st.session_state['prompts'] = []
+    #         st.session_state['generated'] = []
+    #     return c2.text_input("What is in your mind?",key="input")
+    # prompt = get_prompt()
+
+    # if prompt:
+    #     st.session_state.prompts.append(prompt)
+    #     callopenai(prompt)
+
+    # if st.session_state['generated']:
+    #     for i in range(len(st.session_state['generated'])-1, -1, -1):
+    #         g1,g2,g3=st.columns([1,7,2])
+    #         u1,u2,u3=st.columns([4,5,1])
+    #         g1.markdown(':brain:')
+    #         g2.write('<div class="msgbox">'+st.session_state["generated"][i]+'</div>', unsafe_allow_html=True)
+    #         u2.write('<div class="msgbox">'+st.session_state["prompts"][i]+'</div>', unsafe_allow_html=True)
+    #         u3.markdown(':man_in_tuxedo:')
+    # def callopenai(prompt):
+    #     stream=True
+    #     try:
+    #         request = openai.Completion.create(
+    #             engine='text-davinci-003', max_tokens=100, prompt=prompt, stream=stream)
+    #         block=''
+    #         for resp in request:
+    #             block+=resp.choices[0].text
+    #             emptytext.write(block)
+    #     except:
+    #         st.error('Error happened')
