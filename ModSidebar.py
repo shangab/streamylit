@@ -18,6 +18,7 @@ def show():
                      "💹 BI Sales Dashboard",
                      ],
             icons=[
+                "house",
                 "emoji-smile-fill",
                 "chat-dots",
                 "layout-split",
