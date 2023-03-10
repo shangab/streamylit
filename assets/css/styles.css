@@ -12,3 +12,21 @@ div.css-1vq4p4l.e1fqkh3o4 {
   -webkit-box-shadow: 6px 0px 4px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 6px 0px 4px -2px rgba(0, 0, 0, 0.75);
 }
+
+.bi-card {
+  background-color: rgb(12, 3, 90);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+.bi-hdr {
+  font-size: 30px;
+}
+.bi-info {
+  font-size: 20px;
+}
