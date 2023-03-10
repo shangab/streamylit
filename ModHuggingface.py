@@ -20,10 +20,9 @@ def show():
 
     def summarize(article):
         return "YEss"
-    match st.session_state.hf:
-        case 0:
-            st.header('Classification Labeling Model')
-        case 1:
-            st.header('Transformers Summarization')
-            st.code("""def summarize(article):
+    if st.session_state.hf == 0:
+        st.header('Classification Labeling Model')
+    if st.session_state.hf == 1:
+        st.header('Transformers Summarization')
+        st.code("""def summarize(article):
         return "YEss""", language="python")
