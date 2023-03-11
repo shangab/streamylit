@@ -13,8 +13,6 @@ def sales():
     st.write('In this example we used :panda_face: pandas and :bar_chart: plotly python libraries as well as streamlit framework.\n We did the data munging. We also used streamlit caching to enhance processing. ')
     st.markdown("---")
 
-    @st.cache_data
-    @st.cache_resource
     def get_df_from_excel():
         return pd.read_csv("data/supermarket_sales.csv")
 

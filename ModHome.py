@@ -6,7 +6,7 @@ def show():
     st.subheader(
         "This page implements different topics in data science,AI, NLP and OpenAI GPT")
     st.subheader(
-        "Find the code in [GitHub](https://github.com/shangab/streamylit)")
+        "Find the code in [HF GIT](https://huggingface.co/spaces/shangab/shangapp/tree/main)")
     st.markdown("---")
 
     c1, c2 = st.columns([1, 9])

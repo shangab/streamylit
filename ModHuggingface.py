@@ -1,8 +1,10 @@
 import streamlit as st
-from transformers import pipeline
 import plotly.express as px
 import pandas as pd
 import ModUtils as ut
+import requests
+
+HF_API_KEY = st.secrets["HF_API_SECRET"]
 
 
 def show():
@@ -23,11 +25,15 @@ def show():
 
     st.markdown("---")
 
-    def sentimentAnayze(text):
-        with st.spinner("Please wait"):
-            classifier = pipeline("sentiment-analysis")
-            result = classifier(text)
-            return result
+    def sentimentAnayze(prompt):
+        payload = {'inputs': prompt}
+        API_URL = "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english"
+        HF_HEADERS = {
+            "Authorization": f"Bearer {HF_API_KEY}"
+        }
+        with st.spinner("Please wait..."):
+            response = requests.post(API_URL, headers=HF_HEADERS, json=payload)
+            return response.json()
 
     if st.session_state.hf == 0:
         st.header('Sentiment Analysis')
@@ -40,7 +46,7 @@ def show():
             c1, c2 = st.columns(2)
             c1.write(result)
             scores = [0, 0]
-            if result[0]['label'] == 'POSITIVE':
+            if result[0][0]['label'] == 'POSITIVE':
                 scores = [10, 0]
             else:
                 scores = [0, 10]
@@ -52,12 +58,18 @@ def show():
             )
             c2.plotly_chart(chart)
 
-    def zeroShotClassification(prompt, topic_list):
+    def zeroShotClassification(article, topic_list):
+        payload = {
+            "inputs": article,
+            "parameters": {"candidate_labels": topic_list.split(",")},
+        }
+        API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli"
+        HF_HEADERS = {
+            "Authorization": f"Bearer {HF_API_KEY}"
+        }
         with st.spinner("Please waint..."):
-            classifier = pipeline("zero-shot-classification")
-            labels = topic_list.split(",")
-            result = classifier(prompt, candidate_labels=labels)
-            return result
+            response = requests.post(API_URL, headers=HF_HEADERS, json=payload)
+            return response.json()
 
     if st.session_state.hf == 1:
         st.header('Zero-Shot-Classification')
@@ -80,10 +92,16 @@ def show():
             st.plotly_chart(chart)
 
     def textGenerate(prompt):
+        payload = {
+            "inputs": prompt
+        }
+        API_URL = "https://api-inference.huggingface.co/models/gpt2"
+        HF_HEADERS = {
+            "Authorization": f"Bearer {HF_API_KEY}"
+        }
         with st.spinner("Please waint..."):
-            genertor = pipeline("text-generation", model="distilgpt2")
-            text = genertor(prompt)
-            return text
+            response = requests.post(API_URL, headers=HF_HEADERS, json=payload)
+            return response.json()
     if st.session_state.hf == 2:
         st.header('Text Generation')
         st.write('Using the distilgpt2 on text-generaiton task.')
@@ -95,11 +113,16 @@ def show():
             result = textGenerate(prompt)
             ans.write(result)
 
-    def summarize(article,  model_name="t5-base"):
-        with st.spinner("Please waint..."):
-            summarizer = pipeline("summarization", model=model_name,
-                                  tokenizer="t5-base", framework="tf")
-            return summarizer(article)
+    def summarize(article, model):
+        payload = {'inputs': article}
+        API_URL = f"https://api-inference.huggingface.co/models/{model}"
+        HF_HEADERS = {
+            "Authorization": f"Bearer {HF_API_KEY}"
+        }
+        with st.spinner("Please wait..."):
+            response = requests.post(API_URL, headers=HF_HEADERS, json=payload)
+            return response.json()
+
     if st.session_state.hf == 3:
         st.header('Transformers Summarization')
         st.write("We are using this model: facebook/bart-large-cnn, however you can use other trained models from huggingface transformers.")
@@ -111,7 +134,8 @@ def show():
 
             Two radical innovations supported the rapid increase in the availability of information and the decrease in information search-related costs: Gutenberg’s printing innovations and the rise of information technology (IT). Before these radical innovations, the issue of information overload was limited to a wealthy and privileged elite. In particular, the rise of IT and the use of internet services have resulted in an expansion of information overload-related problems for all social ranks. In ancient and medieval times, the nobility and academics almost exclusively faced information overload-related problems, as Blair (2012) and Levitin (2014) suggested.
         """)
-        model = st.text_input("Model to use", value="t5-base")
+        model = st.text_input(
+            "Model to use", value="philschmid/bart-large-cnn-samsum")
         ans = st.empty()
         if st.button("Summarize Article") and prompt:
             summary = summarize(prompt, model)

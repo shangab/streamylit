@@ -1,0 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Dependencies
+venv/
+pip-lock.txt
+pipfile.lock
+
+# Logs and temporary files
+*.log
+*.pot
+*.po
+*.mo
+*.tmp
+*.swp
+*~
+
+# Environment variables
+.env
+
+# IDE specific files
+.streamlit/secrets.toml
+.vscode/
+.idea/
+
+# Hugging Face related files
+transformers/
+
+# Model related files
+pytorch_model.bin
+config.json
+vocab.txt
