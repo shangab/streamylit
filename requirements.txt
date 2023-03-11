@@ -2,4 +2,3 @@ openai
 streamlit_option_menu
 pandas
 plotly
-
