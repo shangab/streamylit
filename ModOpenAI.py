@@ -45,7 +45,7 @@ def imageFunc(prompt, answer_area):
             prompt=prompt,
             n=2,
             size="1024x1024")
-    for one in res.datClass:
+    for one in res.data:
         answer_area.markdown(f'[image]({one.url})', unsafe_allow_html=True)
         st.image(one.url)
 
