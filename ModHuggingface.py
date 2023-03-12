@@ -12,11 +12,11 @@ def show():
     st.subheader(
         "Find more about [Huggingface Transformers](https://huggingface.co/docs/transformers/index)")
     st.write('In the following examples we used  🤗 Huggingface Transformrs pretrained NLP models to accomplish the following tasks.')
-    st.write('Use the Previous and Next buttons to see the examples.')
+    st.write('Use the Prev and Next buttons to see the examples.')
     b1, lbl, b2 = st.columns([1, 8, 1])
     if "hf" not in st.session_state:
         st.session_state.hf = 0
-    if b1.button("Previous"):
+    if b1.button("Prev"):
         if st.session_state.hf > 0:
             st.session_state.hf -= 1
     if b2.button("Next"):
@@ -38,7 +38,8 @@ def show():
     if st.session_state.hf == 0:
         st.header('Sentiment Analysis')
 
-        st.code(ut.getSource(sentimentAnayze), language="python")
+        with st.expander("View Code", expanded=False):
+            st.code(ut.getSource(sentimentAnayze), language="python")
         prompt = st.text_input('A text to classify (POSITIVE or NEGATIVE):')
         ans = st.empty()
         if st.button("Classify Sentence") and prompt:
@@ -75,7 +76,8 @@ def show():
         st.header('Zero-Shot-Classification')
         st.write(
             "Using the zero-shot-classification to classify text on givern comma separated topics")
-        st.code(ut.getSource(zeroShotClassification))
+        with st.expander("View Code", expanded=False):
+            st.code(ut.getSource(zeroShotClassification))
         prompt = st.text_input('A prompt to classify',
                                value="Last year I spend a lot of time focussing on Math and Science")
         topic_list = st.text_input('A comma separated topics to closify the text on',
@@ -105,7 +107,8 @@ def show():
     if st.session_state.hf == 2:
         st.header('Text Generation')
         st.write('Using the distilgpt2 on text-generaiton task.')
-        st.code(ut.getSource(textGenerate))
+        with st.expander("View Code", expanded=False):
+            st.code(ut.getSource(textGenerate))
         prompt = st.text_input('A prompt to guide the model :',
                                value="In this course we will teach you how to")
         ans = st.empty()
@@ -126,10 +129,11 @@ def show():
     if st.session_state.hf == 3:
         st.header('Transformers Summarization')
         st.write("We are using this model: facebook/bart-large-cnn, however you can use other trained models from huggingface transformers.")
-        st.code(ut.getSource(summarize), language="python")
+        with st.expander("View Code", expanded=False):
+            st.code(ut.getSource(summarize), language="python")
 
-        prompt = st.text_area('A text to summarize please:', value="""
-        Academic article
+        prompt = st.text_area('A text to summarize please:', value="""Academic article
+
             Information overload occurs when decision-makers face a level of information that is greater than their information processing capacity, i.e., an overly high information load (Schroder et al. 1967; Eppler and Mengis 2004), but the phenomenon is not confined to the modern world. As Blair (2012) noted in her review article, even in the thirteenth century, scholars complained of “the key ingredients of the feeling of overload which are still with us today: ‘the multitude of books, the shortness of time and the slipperiness of memory’” (Blair 2012, p. 1).
 
             Two radical innovations supported the rapid increase in the availability of information and the decrease in information search-related costs: Gutenberg’s printing innovations and the rise of information technology (IT). Before these radical innovations, the issue of information overload was limited to a wealthy and privileged elite. In particular, the rise of IT and the use of internet services have resulted in an expansion of information overload-related problems for all social ranks. In ancient and medieval times, the nobility and academics almost exclusively faced information overload-related problems, as Blair (2012) and Levitin (2014) suggested.

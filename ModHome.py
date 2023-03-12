@@ -10,10 +10,9 @@ def show():
     st.markdown("---")
 
     c1, c2 = st.columns([1, 9])
-    c1.image("./assets/img/abu2.jpeg", width=100)
+    c1.image("./assets/img/abu.png", width=100)
     c2.write(
         "Abubaker Hamid, is the creator of [Dalinga](https://dalinga.flowbytes.com/) Formal Senthetic Functional Language and [Flowbytes](https://www.flowbytes.com/) Platform writer. M.Sc in Artifiicial Intelligence from [SUST University](https://www.sustech.edu/), Sudan. M.Sc in Discrete Events Systems from [McMaster University](https://www.mcmaster.ca/), Canada. 23 years Experience in Software Engineering.")
-    st.write("(I did not read nor write the below welcome text, it was ChatGPT)")
     st.write("""
     Welcome to our website dedicated to showcasing different implementations of AI algorithms and BI tools using Python Streamlit!
 

@@ -18,7 +18,7 @@
     #                     block+=resp.choices[0].text
     #                     emptytext.write(block)
     #             except:
-    #                 st.error('Error happened')
+    #                 st.error('Error Happened')
     #         st.session_state.generated.append(block)
 
     # def get_prompt():
@@ -52,4 +52,4 @@
     #             block+=resp.choices[0].text
     #             emptytext.write(block)
     #     except:
-    #         st.error('Error happened')
+    #         st.error('Error Happened')
